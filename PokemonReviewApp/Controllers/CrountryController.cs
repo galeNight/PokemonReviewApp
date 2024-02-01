@@ -19,10 +19,9 @@ namespace PokemonReviewApp.Controllers
             _countryRepository = countryRepository;
             _mapper = mapper;
         }
-
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Pokemon>))]
-        public IActionResult GetPokemons()
+        public IActionResult GetCountries()
         {
             var country = _mapper.Map<List<CountryDto>>(_countryRepository.GetCountries());
 
@@ -35,7 +34,7 @@ namespace PokemonReviewApp.Controllers
         [HttpGet("{countryId}")]
         [ProducesResponseType(200, Type = typeof(Country))]
         [ProducesResponseType(400)]
-        public IActionResult GetPokemon(int countryId)
+        public IActionResult GetCountry(int countryId)
         {
             if (!_countryRepository.CountryExists(countryId))
                 return NotFound();
