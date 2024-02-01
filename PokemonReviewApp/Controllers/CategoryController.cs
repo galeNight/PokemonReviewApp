@@ -22,7 +22,7 @@ namespace PokemonReviewApp.Controllers
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Category>))]
-        public IActionResult GetCategory()
+        public IActionResult GetCategories()
         {
             var categories = _mapper.Map<List<CategoryDto>>(_categoryRepository.GetCategories());
             if (!ModelState.IsValid)
@@ -34,17 +34,17 @@ namespace PokemonReviewApp.Controllers
         [HttpGet("{categoryId}")]
         [ProducesResponseType(200, Type = typeof(Category))]
         [ProducesResponseType(400)]
-        public IActionResult GetCategory(int CategoryId)
+        public IActionResult GetCategory(int categoryId)
         {
-            if (!_categoryRepository.CategoriesExists(CategoryId))
+            if (!_categoryRepository.CategoriesExists(categoryId))
                 return NotFound();
 
-            var Category = _mapper.Map<CategoryDto>(_categoryRepository.GetCategory(CategoryId));
+            var category = _mapper.Map<CategoryDto>(_categoryRepository.GetCategory(categoryId));
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(Category);
+            return Ok(category);
         }
 
         [HttpGet("pokemon/{categoryId}")]
