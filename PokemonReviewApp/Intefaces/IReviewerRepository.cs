@@ -8,6 +8,6 @@ namespace PokemonReviewApp.Intefaces
         ICollection<Reviewer> GetReviewers();
         Reviewer GetReviewer(int reviewerId);
         ICollection<Review> GetReviewsByReviwer(int reviwerId);
-        bool ReviewerRxists(int reviwerId);
+        bool ReviewerExists(int reviwerId);
     }
 }

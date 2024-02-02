@@ -30,7 +30,7 @@ namespace PokemonReviewApp.Repository
             return _context.Reviews.Where(r => r.Reviewer.Id == reviwerId).ToList();
         }
 
-        public bool ReviewerRxists(int reviwerId)
+        public bool ReviewerExists(int reviwerId)
         {
             return _context.Reviewers.Any(r => r.Id == reviwerId);
         }
