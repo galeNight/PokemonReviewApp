@@ -64,5 +64,30 @@ namespace PokemonReviewApp.Controllers
 
             return Ok(owner);
         }
+
+        public IActionResult CreateCategory([FromBody] OwnerDto ownerCreate)
+        {
+            if (ownerCreate == null)
+                return BadRequest(ModelState);
+
+            var owners = _ownerRepository.GetOwners().Where(c => c.LastName.Trim().ToUpper() == ownerCreate.LastName.TrimEnd()).FirstOrDefault();
+
+            if (owners != null)
+            {
+                ModelState.AddModelError("", "Owner already exist");
+                return StatusCode(422, ModelState);
+            }
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var ownersMap = _mapper.Map<Owner>(ownerCreate);
+
+            if (!_ownerRepository.CreateOwner(ownersMap))
+            {
+                ModelState.AddModelError("", "Somthing went wrong while saving");
+                return StatusCode(500, ModelState);
+            }
+            return Ok("Successfully Created");
+        }
     }
 }
