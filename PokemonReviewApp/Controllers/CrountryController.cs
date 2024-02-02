@@ -66,7 +66,7 @@ namespace PokemonReviewApp.Controllers
         public IActionResult CreateCountry([FromBody] CountryDto countryCreate)
         {
             if (countryCreate == null)
-                return BadRequest();
+                return BadRequest(ModelState);
 
             var country = _countryRepository.GetCountries().Where(c => c.Name.Trim().ToUpper() == countryCreate.Name.TrimEnd()).FirstOrDefault();
 
@@ -78,7 +78,7 @@ namespace PokemonReviewApp.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var countryMap = _mapper.Map<Country>(country);
+            var countryMap = _mapper.Map<Country>(countryCreate);
 
             if (!_countryRepository.CreateCountry(countryMap))
             {
