@@ -78,7 +78,7 @@ namespace PokemonReviewApp.Controllers
                 return StatusCode(422, ModelState);
             }
             if (!ModelState.IsValid)
-                return BadRequest();
+                return BadRequest(ModelState);
 
             var ownersMap = _mapper.Map<Owner>(ownerCreate);
 
