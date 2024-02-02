@@ -66,7 +66,7 @@ namespace PokemonReviewApp.Controllers
         public IActionResult CreateCategory([FromBody] CategoryDto categoryCreate)
         {
             if(categoryCreate == null)
-                return BadRequest();
+                return BadRequest(ModelState);
 
             var category = _categoryRepository.GetCategories().Where(c => c.Name.Trim().ToUpper() == categoryCreate.Name.TrimEnd()).FirstOrDefault();
 
@@ -76,7 +76,7 @@ namespace PokemonReviewApp.Controllers
                 return StatusCode(422, ModelState);
             }
             if(!ModelState.IsValid) 
-                return BadRequest();
+                return BadRequest(ModelState);
 
             var categoryMap = _mapper.Map<Category>(categoryCreate);
 

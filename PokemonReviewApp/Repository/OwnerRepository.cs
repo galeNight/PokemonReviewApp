@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using PokemonReviewApp.Data;
 using PokemonReviewApp.Intefaces;
 using PokemonReviewApp.Models;
@@ -8,6 +9,7 @@ namespace PokemonReviewApp.Repository
     public class OwnerRepository : IOwnerRepository
     {
         private readonly DataContext _context;
+        private readonly ICountryRepository _countryRepository;
 
         public OwnerRepository(DataContext context)
         {

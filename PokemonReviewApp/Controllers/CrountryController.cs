@@ -76,7 +76,7 @@ namespace PokemonReviewApp.Controllers
                 return StatusCode(422, ModelState);
             }
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+                return BadRequest();
 
             var countryMap = _mapper.Map<Country>(countryCreate);
 

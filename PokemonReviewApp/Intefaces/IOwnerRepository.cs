@@ -1,4 +1,5 @@
-﻿using PokemonReviewApp.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using PokemonReviewApp.Models;
 using System.Collections;
 
 namespace PokemonReviewApp.Intefaces
