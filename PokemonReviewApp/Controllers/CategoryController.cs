@@ -103,7 +103,7 @@ namespace PokemonReviewApp.Controllers
             if (!_categoryRepository.CategoriesExists(categoryId))
                 return NotFound();
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest();
 
             var categoryMap = _mapper.Map<Category>(updatedCategory);
