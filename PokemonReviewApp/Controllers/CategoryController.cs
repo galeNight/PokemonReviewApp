@@ -134,7 +134,7 @@ namespace PokemonReviewApp.Controllers
 
             if (!_categoryRepository.DeleteCategory(categoryToDelete))
             {
-                ModelState.AddModelError("", "Somthing went wrng deletingcategory");
+                ModelState.AddModelError("", "Somthing went wrng deleting category");
             }
             return NoContent();
         }
