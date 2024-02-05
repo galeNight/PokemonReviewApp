@@ -87,7 +87,7 @@ namespace PokemonReviewApp.Controllers
             }
             return Ok("Successfully Created");
         }
-        [HttpPut("counrtyId")]
+        [HttpPut("{counrtyId}")]
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
