@@ -121,7 +121,7 @@ namespace PokemonReviewApp.Controllers
 
             if (!_ownerRepository.UpdateOwner(ownerMap))
             {
-                ModelState.AddModelError("", "Somthing went wrong updating category");
+                ModelState.AddModelError("", "Somthing went wrong updating owner");
                 return StatusCode(500, ModelState);
             }
             return NoContent();

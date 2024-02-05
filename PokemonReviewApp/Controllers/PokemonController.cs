@@ -123,7 +123,7 @@ namespace PokemonReviewApp.Controllers
 
             if (!_pokemonRepository.UpdatePokemon(ownerId,categoryId,pokemonMap))
             {
-                ModelState.AddModelError("", "Somthing went wrong updating category");
+                ModelState.AddModelError("", "Somthing went wrong updating pokemon");
                 return StatusCode(500, ModelState);
             }
             return NoContent();
